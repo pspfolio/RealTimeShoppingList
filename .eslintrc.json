@@ -1,6 +1,9 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": ["prettier"],
+  "rules": {
+    "react/prop-types": 0
+  },
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
