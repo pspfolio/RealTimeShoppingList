@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   // polku josta React aloittaa suorituksen
-  entry: './app/index.jsx',
+  entry: './src/index.jsx',
   output: {
     // polku johon bundlattu tiedosto generoidaan ja bundlen nimi
     path: path.resolve('public'),
