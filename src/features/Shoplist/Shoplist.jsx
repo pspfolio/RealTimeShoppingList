@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Shopitem from './Shopitem';
+
+const ListWrapper = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+`;
 
 class Shoplist extends Component {
   constructor(props) {
@@ -10,11 +18,11 @@ class Shoplist extends Component {
   }
   render() {
     return (
-      <ul>
+      <ListWrapper>
         {this.state.shopitems.map(shopitem => (
           <Shopitem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
         ))}
-      </ul>
+      </ListWrapper>
     );
   }
 }

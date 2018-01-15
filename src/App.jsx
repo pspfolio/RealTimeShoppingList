@@ -1,11 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import ShopList from './features/Shoplist/Shoplist';
 
+const FlexWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const App = () => (
-  <div>
-    <h1>Hello World</h1>
+  <FlexWrapper>
     <ShopList />
-  </div>
+  </FlexWrapper>
 );
 
 export default App;
