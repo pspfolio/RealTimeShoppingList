@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Shopitem = ({ shopitem }) => <h3>{shopitem.name}</h3>;
+const Shopitem = ({ name, inCart }) => <li className={inCart ? 'inCart' : ''}>{name}</li>;
 
 export default Shopitem;
