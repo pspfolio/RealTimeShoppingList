@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Shopitem from './Shopitem';
+import ShoplistItem from './ShoplistItem';
 
 const ListWrapper = styled.ul`
   list-style: none;
@@ -20,7 +20,7 @@ class Shoplist extends Component {
     return (
       <ListWrapper>
         {this.state.shopitems.map(shopitem => (
-          <Shopitem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
+          <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
         ))}
       </ListWrapper>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import ShopList from './features/Shoplist/Shoplist';
-import ShoppingLists from './features/ShoppingLists/ShoppingLists';
+import Shoplist from './features/Shoplists/Shoplist';
+import Shoplists from './features/Shoplists/Shoplists';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -12,8 +12,8 @@ const FlexWrapper = styled.div`
 const App = () => (
   <Router>
     <FlexWrapper>
-      <Route exact path="/" component={ShopList} />
-      <Route path="/list" component={ShoppingLists} />
+      <Route exact path="/" component={Shoplist} />
+      <Route path="/list" component={Shoplists} />
     </FlexWrapper>
   </Router>
 );
