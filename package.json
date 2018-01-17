@@ -9,6 +9,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js **/*.{js,jsx} --quiet"
   },
   "dependencies": {
+    "firebase": "^4.8.2",
     "global": "^4.3.2",
     "path": "^0.12.7",
     "prettier": "^1.10.2",
