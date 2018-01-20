@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase';
 
+const Initial_State = {
+  username: '',
+  password: '',
+  email: '',
+  confirmPassword: '',
+  error: null
+};
+
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      username: '',
-      password: '',
-      email: '',
-      confirmPassword: '',
-      error: null
-    };
+    this.state = { ...Initial_State };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
@@ -22,19 +24,9 @@ class SignUpForm extends Component {
     auth
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.setState({
-          username: '',
-          password: '',
-          email: '',
-          confirmPassword: '',
-          error: null
-        });
+        this.setState({ ...Initial_State });
       })
-      .catch(error =>
-        this.setState({
-          error
-        })
-      );
+      .catch(error => this.setState({ error }));
 
     event.preventDefault();
   }
