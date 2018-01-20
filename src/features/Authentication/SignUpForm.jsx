@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase';
 
-const Initial_State = {
+const InitialState = {
   username: '',
   password: '',
   email: '',
@@ -13,7 +13,7 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...Initial_State };
+    this.state = InitialState;
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
@@ -21,10 +21,12 @@ class SignUpForm extends Component {
 
   onSubmit(event) {
     const { email, password } = this.state;
+    const { history } = this.props;
     auth
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.setState({ ...Initial_State });
+        this.setState({ ...InitialState });
+        history.push('/');
       })
       .catch(error => this.setState({ error }));
 

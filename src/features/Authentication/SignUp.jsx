@@ -1,10 +1,10 @@
 import React from 'react';
 import SignUpForm from './SignUpForm';
 
-const SignUp = () => (
+const SignUp = ({ history }) => (
   <div>
     <h1>SignUp</h1>
-    <SignUpForm />
+    <SignUpForm history={history} />
   </div>
 );
 
