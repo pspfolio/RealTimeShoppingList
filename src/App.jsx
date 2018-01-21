@@ -5,6 +5,7 @@ import Shoplist from './features/Shoplists/Shoplist';
 import Shoplists from './features/Shoplists/Shoplists';
 import SignIn from './features/Authentication/SignIn';
 import SignUp from './features/Authentication/SignUp';
+import SignOut from './features/Authentication/SignOut';
 import PasswordForget from './features/Authentication/PasswordForget';
 
 const FlexWrapper = styled.div`
@@ -15,6 +16,7 @@ const FlexWrapper = styled.div`
 const App = () => (
   <Router>
     <FlexWrapper>
+      <SignOut />
       <Route exact path="/" component={Shoplist} />
       <Route exact path="/list" component={Shoplists} />
       <Route exact path="/login" component={SignIn} />
