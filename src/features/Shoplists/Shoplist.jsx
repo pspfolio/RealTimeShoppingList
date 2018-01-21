@@ -16,9 +16,11 @@ class Shoplist extends Component {
       shopitems: [{ id: 1, name: 'Maito', inCart: false }, { id: 2, name: 'Banaani', inCart: true }]
     };
   }
+
   render() {
     return (
       <ListWrapper>
+        {this.context}
         {this.state.shopitems.map(shopitem => (
           <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
         ))}
