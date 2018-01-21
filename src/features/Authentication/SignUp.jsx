@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 
 const SignUp = ({ history }) => (
@@ -8,4 +9,4 @@ const SignUp = ({ history }) => (
   </div>
 );
 
-export default SignUp;
+export default withRouter(SignUp);
