@@ -13,6 +13,7 @@
     "global": "^4.3.2",
     "path": "^0.12.7",
     "prettier": "^1.10.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",

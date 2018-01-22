@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ShoplistItem from './ShoplistItem';
 
@@ -19,14 +20,19 @@ class Shoplist extends Component {
 
   render() {
     return (
-      <ListWrapper>
-        {this.context}
-        {this.state.shopitems.map(shopitem => (
-          <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
-        ))}
-      </ListWrapper>
+      <div>
+        <ListWrapper>
+          {this.state.shopitems.map(shopitem => (
+            <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
+          ))}
+        </ListWrapper>
+      </div>
     );
   }
 }
+
+Shoplist.contextTypes = {
+  authUser: PropTypes.object
+};
 
 export default Shoplist;

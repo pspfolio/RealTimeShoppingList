@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { firebase } from '../../firebase';
 
 const withAuthentication = InnerComponent => {
@@ -31,6 +32,10 @@ const withAuthentication = InnerComponent => {
       return <InnerComponent />;
     }
   }
+
+  WithAuthentication.childContextTypes = {
+    authUser: PropTypes.object
+  };
 
   return WithAuthentication;
 };
