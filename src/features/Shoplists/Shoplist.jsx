@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ShoplistItem from './ShoplistItem';
+import withAuthorization from '../../common/HOC/withAuthorization';
 
 const ListWrapper = styled.ul`
   list-style: none;
@@ -35,4 +36,6 @@ Shoplist.contextTypes = {
   authUser: PropTypes.object
 };
 
-export default Shoplist;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(Shoplist);

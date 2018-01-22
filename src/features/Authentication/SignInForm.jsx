@@ -12,6 +12,8 @@ class SignInForm extends Component {
     super(props);
 
     this.state = { ...InitialState };
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(event) {
