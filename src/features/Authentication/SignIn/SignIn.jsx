@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SignInForm from './SignInForm';
-import SignUpLink from './SignUpLink';
-import PasswordForgetLink from './PasswordForgetLink';
+import SignUpLink from '../SignUp/SignUpLink';
+import PasswordForgetLink from '../PasswordForget/PasswordForgetLink';
 
 const SignIn = ({ history }) => (
   <div>

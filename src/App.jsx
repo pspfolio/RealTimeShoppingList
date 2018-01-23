@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Shoplist from './features/Shoplists/Shoplist';
 import Shoplists from './features/Shoplists/Shoplists';
-import SignIn from './features/Authentication/SignIn';
-import SignUp from './features/Authentication/SignUp';
-import SignOut from './features/Authentication/SignOut';
-import PasswordForget from './features/Authentication/PasswordForget';
+import SignIn from './features/Authentication/SignIn/SignIn';
+import SignUp from './features/Authentication/SignUp/SignUp';
+import SignOut from './features/Authentication/SignOut/SignOut';
+import PasswordForget from './features/Authentication/PasswordForget/PasswordForget';
 import WithAuthentication from './common/HOC/WithAuthentication';
 
 const FlexWrapper = styled.div`
