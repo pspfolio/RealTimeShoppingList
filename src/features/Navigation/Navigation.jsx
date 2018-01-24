@@ -12,6 +12,10 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 0 10px;
   line-height: 40px;
+
+  &:hover {
+    color: #e040fb;
+  }
 `;
 
 const Navigation = () => (

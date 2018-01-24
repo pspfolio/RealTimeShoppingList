@@ -14,6 +14,7 @@ import WithAuthentication from './common/HOC/WithAuthentication';
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
+  font-family: 'Lato';
 `;
 
 const App = (props, { authUser }) => (
