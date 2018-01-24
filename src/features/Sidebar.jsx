@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation/Navigation';
+import SignOut from './Authentication/SignOut/SignOut';
 
 const SidebarWrapper = styled.div`
   position: fixed;
@@ -15,6 +16,7 @@ const SidebarWrapper = styled.div`
 const Sidebar = () => (
   <SidebarWrapper>
     <Navigation />
+    <SignOut />
   </SidebarWrapper>
 );
 
