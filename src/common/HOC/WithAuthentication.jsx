@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { firebase } from '../../firebase';
+import { auth } from '../../firebase';
 
 const withAuthentication = InnerComponent => {
   class WithAuthentication extends Component {
@@ -19,7 +19,7 @@ const withAuthentication = InnerComponent => {
     }
 
     componentDidMount() {
-      firebase.onAuthStateChanged(authUser => {
+      auth.onAuthStateChanged(authUser => {
         if (authUser) {
           this.setState(() => ({ authUser }));
         } else {

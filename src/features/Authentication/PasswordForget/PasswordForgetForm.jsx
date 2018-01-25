@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth } from '../../../firebase';
+import { authentication } from '../../../firebase';
 
 const InitialState = {
   email: '',
@@ -18,7 +18,7 @@ class PasswordForgetForm extends Component {
   onSubmit(event) {
     const { email } = this.state;
 
-    auth
+    authentication
       .doPasswordReset(email)
       .then(() => {
         this.setState(() => ({ ...InitialState }));

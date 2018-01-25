@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth } from '../../../firebase';
+import { authentication } from '../../../firebase';
 
 const InitialState = {
   email: '',
@@ -20,7 +20,7 @@ class SignInForm extends Component {
     const { email, password } = this.state;
     const { history } = this.props;
 
-    auth
+    authentication
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...InitialState });

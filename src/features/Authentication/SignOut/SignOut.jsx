@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { auth } from '../../../firebase';
+import { authentication } from '../../../firebase';
 
 const SignOutButton = () => (
-  <button type="button" onClick={auth.doSignOut}>
+  <button type="button" onClick={authentication.doSignOut}>
     Sign out
   </button>
 );

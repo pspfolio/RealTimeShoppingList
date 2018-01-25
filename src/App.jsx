@@ -6,7 +6,6 @@ import Shoplist from './features/Shoplists/Shoplist';
 import Shoplists from './features/Shoplists/Shoplists';
 import SignIn from './features/Authentication/SignIn/SignIn';
 import SignUp from './features/Authentication/SignUp/SignUp';
-import SignOut from './features/Authentication/SignOut/SignOut';
 import PasswordForget from './features/Authentication/PasswordForget/PasswordForget';
 import Sidebar from './features/Sidebar';
 import WithAuthentication from './common/HOC/WithAuthentication';
