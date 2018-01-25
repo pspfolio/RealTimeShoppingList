@@ -27,9 +27,6 @@ const Navigation = () => (
       <li>
         <StyledLink to="/list">Shopping lists</StyledLink>
       </li>
-      <li>
-        <StyledLink to="/logout">Logout</StyledLink>
-      </li>
     </List>
   </nav>
 );

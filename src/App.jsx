@@ -25,7 +25,6 @@ const App = (props, { authUser }) => (
       <Route exact path="/list" component={Shoplists} />
       <Route exact path="/login" component={SignIn} />
       <Route exact path="/register" component={SignUp} />
-      <Route exact path="/logout" component={SignOut} />
       <Route exact path="/pw-forget" component={PasswordForget} />
     </FlexWrapper>
   </Router>
