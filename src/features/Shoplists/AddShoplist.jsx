@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddShoplistForm from './AddShoplistForm';
+import AddShoplistPreview from './AddShoplistPreview';
 import withAuthorization from '../../common/HOC/withAuthorization';
 
 class AddShoplist extends Component {
@@ -7,19 +9,30 @@ class AddShoplist extends Component {
     super(props);
 
     this.state = {
-      name: ''
+      title: '',
+      items: []
     };
+
+    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onItemAdd = this.onItemAdd.bind(this);
+  }
+
+  onTitleChange(event) {
+    this.setState({ title: event.target.value });
+  }
+
+  onItemAdd(item) {
+    const { items } = this.state;
+    this.setState({ items: [...items, item] });
   }
 
   render() {
-    const { name } = this.state;
+    const { title } = this.state;
     return (
-      <form>
-        <label htmlFor="name">
-          Shoppinglist name
-          <input id="name" type="text" value={name} onChange={event => this.setState({ name: event.target.value })} />
-        </label>
-      </form>
+      <div>
+        <AddShoplistForm title={title} onTitleChange={this.onTitleChange} onItemAdd={this.onItemAdd} />
+        <AddShoplistPreview />
+      </div>
     );
   }
 }
