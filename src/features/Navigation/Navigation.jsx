@@ -27,6 +27,9 @@ const Navigation = () => (
       <li>
         <StyledLink to="/list">Shopping lists</StyledLink>
       </li>
+      <li>
+        <StyledLink to="/add">Add shopping list</StyledLink>
+      </li>
     </List>
   </nav>
 );

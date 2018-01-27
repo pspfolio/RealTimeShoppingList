@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Shoplist from './features/Shoplists/Shoplist';
 import Shoplists from './features/Shoplists/Shoplists';
+import AddShoplist from './features/Shoplists/AddShoplist';
 import SignIn from './features/Authentication/SignIn/SignIn';
 import SignUp from './features/Authentication/SignUp/SignUp';
 import PasswordForget from './features/Authentication/PasswordForget/PasswordForget';
@@ -22,6 +23,7 @@ const App = (props, { authUser }) => (
       {authUser && <Sidebar />}
       <Route exact path="/" component={Shoplist} />
       <Route exact path="/list" component={Shoplists} />
+      <Route exact path="/Add" component={AddShoplist} />
       <Route exact path="/login" component={SignIn} />
       <Route exact path="/register" component={SignUp} />
       <Route exact path="/pw-forget" component={PasswordForget} />
