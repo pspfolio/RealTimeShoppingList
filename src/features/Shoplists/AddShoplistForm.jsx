@@ -6,10 +6,11 @@ class ShoplistForm extends Component {
 
     this.state = {
       name: '',
-      category: ''
+      category: 'fruitsvegetables'
     };
 
     this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
 
   handleAddItem(event) {
@@ -20,6 +21,12 @@ class ShoplistForm extends Component {
 
     this.setState({ name: '', category: '' });
     event.preventDefault();
+  }
+
+  handleCategoryChange(event) {
+    const { target } = event;
+
+    this.setState({ category: { value: target.value, name: target.options[target.selectedIndex].text } });
   }
 
   render() {
@@ -40,7 +47,7 @@ class ShoplistForm extends Component {
 
         <label htmlFor="category">
           Pick category
-          <select value={category} onChange={event => this.setState({ category: event.target.value })} id="category">
+          <select value={category.value} onChange={this.handleCategoryChange} id="category">
             <option value="fruitsvegetables">Fruits & Vegetables</option>
             <option value="bread">Bread</option>
             <option value="milkyogurts">Milk & Yogurts</option>

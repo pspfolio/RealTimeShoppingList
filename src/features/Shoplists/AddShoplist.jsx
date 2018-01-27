@@ -27,11 +27,11 @@ class AddShoplist extends Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, items } = this.state;
     return (
       <div>
         <AddShoplistForm title={title} onTitleChange={this.onTitleChange} onItemAdd={this.onItemAdd} />
-        <AddShoplistPreview />
+        <AddShoplistPreview title={title} items={items} />
       </div>
     );
   }
