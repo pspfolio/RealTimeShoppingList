@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import AddShoplistForm from './AddShoplistForm';
 import AddShoplistPreview from './AddShoplistPreview';
 import withAuthorization from '../../common/HOC/withAuthorization';
+
+const FlexWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  margin-left: 320px;
+`;
 
 class AddShoplist extends Component {
   constructor(props) {
@@ -29,10 +36,10 @@ class AddShoplist extends Component {
   render() {
     const { title, items } = this.state;
     return (
-      <div>
+      <FlexWrapper>
         <AddShoplistForm title={title} onTitleChange={this.onTitleChange} onItemAdd={this.onItemAdd} />
         <AddShoplistPreview title={title} items={items} />
-      </div>
+      </FlexWrapper>
     );
   }
 }

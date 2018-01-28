@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
 
 class ShoplistForm extends Component {
   constructor(props) {
@@ -34,7 +41,7 @@ class ShoplistForm extends Component {
     const { title, onTitleChange } = this.props;
 
     return (
-      <div>
+      <FlexWrapper>
         <label htmlFor="name">
           Shoppinglist name
           <input id="name" type="text" value={title} onChange={onTitleChange} />
@@ -59,7 +66,7 @@ class ShoplistForm extends Component {
         <button type="button" onClick={this.handleAddItem}>
           Add item
         </button>
-      </div>
+      </FlexWrapper>
     );
   }
 }
