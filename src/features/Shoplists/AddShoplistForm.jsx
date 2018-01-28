@@ -13,7 +13,7 @@ class ShoplistForm extends Component {
 
     this.state = {
       name: '',
-      category: 'fruitsvegetables'
+      category: { value: 'fruitsvegetables', name: 'Fruits & Vegetables' }
     };
 
     this.handleAddItem = this.handleAddItem.bind(this);
@@ -26,7 +26,7 @@ class ShoplistForm extends Component {
 
     onItemAdd({ name, category });
 
-    this.setState({ name: '', category: '' });
+    this.setState({ name: '', category: { value: 'fruitsvegetables', name: 'Fruits & Vegetables' } });
     event.preventDefault();
   }
 
