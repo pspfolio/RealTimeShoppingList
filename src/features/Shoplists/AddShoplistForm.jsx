@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import { purple500 } from 'material-ui/styles/colors';
+import ShoplistCategorySelectField from './ShoplistCategorySelectField';
 
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
 `;
+
+const styles = {
+  underlineStyle: {
+    borderColor: purple500
+  },
+  floatingLabelFocusStyle: {
+    color: purple500
+  }
+};
+
+const categories = [
+  { value: 'fruitsvegetables', name: 'Fruits & Vegetables' },
+  { value: 'bread', name: 'Bread' },
+  { value: 'milkyogurts', name: 'Milk & Yogurts' },
+  { value: 'meat', name: 'Meat' },
+  { value: 'drinks', name: 'Drinks' }
+];
 
 class ShoplistForm extends Component {
   constructor(props) {
@@ -30,10 +51,9 @@ class ShoplistForm extends Component {
     event.preventDefault();
   }
 
-  handleCategoryChange(event) {
-    const { target } = event;
-
-    this.setState({ category: { value: target.value, name: target.options[target.selectedIndex].text } });
+  handleCategoryChange(event, index, value) {
+    const { name } = categories.filter(category => category.value === value)[0];
+    this.setState({ category: { value, name } });
   }
 
   render() {
@@ -42,30 +62,37 @@ class ShoplistForm extends Component {
 
     return (
       <FlexWrapper>
-        <label htmlFor="name">
-          Shoppinglist name
-          <input id="name" type="text" value={title} onChange={onTitleChange} />
-        </label>
+        <TextField
+          hintText="Title of shoplist"
+          floatingLabelText="Title"
+          value={title}
+          onChange={onTitleChange}
+          underlineFocusStyle={styles.underlineStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+        />
 
-        <label htmlFor="item">
-          Shoplist item
-          <input id="item" type="text" value={name} onChange={event => this.setState({ name: event.target.value })} />
-        </label>
+        <TextField
+          hintText="Item name"
+          floatingLabelText="Item"
+          value={name}
+          onChange={event => this.setState({ name: event.target.value })}
+          underlineFocusStyle={styles.underlineStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+        />
 
-        <label htmlFor="category">
-          Pick category
-          <select value={category.value} onChange={this.handleCategoryChange} id="category">
-            <option value="fruitsvegetables">Fruits & Vegetables</option>
-            <option value="bread">Bread</option>
-            <option value="milkyogurts">Milk & Yogurts</option>
-            <option value="meat">Meat</option>
-            <option value="drinks">Drinks</option>
-          </select>
-        </label>
+        <ShoplistCategorySelectField
+          categories={categories}
+          handleCategoryChange={this.handleCategoryChange}
+          value={category.value}
+        />
 
-        <button type="button" onClick={this.handleAddItem}>
-          Add item
-        </button>
+        <RaisedButton
+          type="button"
+          label="Add item"
+          onClick={this.handleAddItem}
+          backgroundColor={purple500}
+          labelColor="white"
+        />
       </FlexWrapper>
     );
   }
