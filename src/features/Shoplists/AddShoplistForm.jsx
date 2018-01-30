@@ -92,6 +92,7 @@ class ShoplistForm extends Component {
           onClick={this.handleAddItem}
           backgroundColor={purple500}
           labelColor="white"
+          disabled={name === ''}
         />
       </FlexWrapper>
     );
