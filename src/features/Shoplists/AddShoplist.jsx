@@ -17,7 +17,13 @@ class AddShoplist extends Component {
 
     this.state = {
       title: '',
-      items: []
+      shoplistItems: {
+        fruitsvegetables: [],
+        bread: [],
+        milkyogurts: [],
+        meat: [],
+        drinks: []
+      }
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -29,16 +35,21 @@ class AddShoplist extends Component {
   }
 
   onItemAdd(item) {
-    const { items } = this.state;
-    this.setState({ items: [...items, item] });
+    const { category: { value } } = item;
+    this.setState(prevState => ({
+      shoplistItems: {
+        ...prevState.shoplistItems,
+        [value]: [...prevState.shoplistItems[value], item.name]
+      }
+    }));
   }
 
   render() {
-    const { title, items } = this.state;
+    const { title, items, shoplistItems } = this.state;
     return (
       <FlexWrapper>
         <AddShoplistForm title={title} onTitleChange={this.onTitleChange} onItemAdd={this.onItemAdd} />
-        <AddShoplistPreview title={title} items={items} />
+        <AddShoplistPreview title={title} items={items} shoplistItems={shoplistItems} />
       </FlexWrapper>
     );
   }
