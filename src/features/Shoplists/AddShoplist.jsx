@@ -62,7 +62,7 @@ class AddShoplist extends Component {
           <ShoplistHeader isPlaceHolder={!title}>{title || 'Title placeholder'}</ShoplistHeader>
 
           {fruitsvegetables.length > 0 && (
-            <AddShoplistPreview categoryName="Hedelmät & Vihannekset" items={fruitsvegetables} />
+            <AddShoplistPreview categoryName="Hedelmät & Vihannekset" emoji="🥕" items={fruitsvegetables} />
           )}
 
           {bread.length > 0 && <AddShoplistPreview categoryName="leivät" items={bread} />}
