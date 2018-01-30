@@ -11,6 +11,15 @@ const FlexWrapper = styled.div`
   margin-left: 320px;
 `;
 
+const ShoplistPreviewWrapper = styled.div`
+  flex: 1;
+  text-align: center;
+`;
+
+const ShoplistHeader = styled.h2`
+  color: ${props => (props.isPlaceHolder ? '#8998AA' : '#393939')};
+`;
+
 class AddShoplist extends Component {
   constructor(props) {
     super(props);
@@ -45,11 +54,25 @@ class AddShoplist extends Component {
   }
 
   render() {
-    const { title, items, shoplistItems } = this.state;
+    const { title, shoplistItems: { fruitsvegetables, bread, milkyogurts, meat, drinks } } = this.state;
     return (
       <FlexWrapper>
         <AddShoplistForm title={title} onTitleChange={this.onTitleChange} onItemAdd={this.onItemAdd} />
-        <AddShoplistPreview title={title} items={items} shoplistItems={shoplistItems} />
+        <ShoplistPreviewWrapper>
+          <ShoplistHeader isPlaceHolder={!title}>{title || 'Title placeholder'}</ShoplistHeader>
+
+          {fruitsvegetables.length > 0 && (
+            <AddShoplistPreview categoryName="Hedelmät & Vihannekset" items={fruitsvegetables} />
+          )}
+
+          {bread.length > 0 && <AddShoplistPreview categoryName="leivät" items={bread} />}
+
+          {milkyogurts.length > 0 && <AddShoplistPreview categoryName="Maito & Jugurtit" items={milkyogurts} />}
+
+          {meat.length > 0 && <AddShoplistPreview categoryName="Liha" items={meat} />}
+
+          {drinks.length > 0 && <AddShoplistPreview categoryName="Juomat" items={drinks} />}
+        </ShoplistPreviewWrapper>
       </FlexWrapper>
     );
   }
