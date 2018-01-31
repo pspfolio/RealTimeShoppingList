@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { database } from '../../firebase/index';
 import AddShoplistForm from './AddShoplistForm';
 import AddShoplistPreview from './AddShoplistPreview';
 import withAuthorization from '../../common/HOC/withAuthorization';
@@ -37,6 +38,12 @@ class AddShoplist extends Component {
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onItemAdd = this.onItemAdd.bind(this);
+  }
+
+  componentDidMount() {
+    database.ref().on('value', snapshot => {
+      console.log('DB CHANGED', snapshot.val());
+    });
   }
 
   onTitleChange(event) {
