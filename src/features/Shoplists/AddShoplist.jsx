@@ -21,24 +21,30 @@ const ShoplistHeader = styled.h2`
   color: ${props => (props.isPlaceHolder ? '#8998AA' : '#393939')};
 `;
 
+const initState = {
+  title: '',
+  shoplistItems: {
+    fruitsvegetables: [],
+    bread: [],
+    milkyogurts: [],
+    meat: [],
+    drinks: []
+  }
+};
+
 class AddShoplist extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      title: '',
-      shoplistItems: {
-        fruitsvegetables: [],
-        bread: [],
-        milkyogurts: [],
-        meat: [],
-        drinks: []
-      }
-    };
+    this.state = { ...initState };
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onItemAdd = this.onItemAdd.bind(this);
     this.handleShoplistSave = this.handleShoplistSave.bind(this);
+
+    this.ref = database.ref('shoppinglist');
+    this.shoppingListRef = this.ref.child('/shoplist');
+    this.itemsRef = this.ref.child('/items');
   }
 
   onTitleChange(event) {
@@ -57,10 +63,12 @@ class AddShoplist extends Component {
 
   handleShoplistSave(event) {
     event.preventDefault();
-    database
-      .ref()
-      .child('shoppinglist')
-      .push({ ...this.state });
+
+    const { title, shoplistItems } = this.state;
+    const addeditem = this.shoppingListRef.push(title);
+    this.itemsRef.child(`/${addeditem.key}`).set(shoplistItems);
+
+    this.setState({ ...initState });
   }
 
   render() {
