@@ -60,7 +60,7 @@ class AddShoplist extends Component {
     database
       .ref()
       .child('shoppinglist')
-      .set({ ...this.state });
+      .push({ ...this.state });
   }
 
   render() {
