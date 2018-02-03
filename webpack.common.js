@@ -8,10 +8,6 @@ module.exports = {
     path: path.resolve('public'),
     filename: 'bundle.js'
   },
-  devServer: {
-    publicPath: '/public/',
-    historyApiFallback: true
-  },
   // Kerrotaan webpackille, että selvittää automaattisesti nämä päätteet
   // Ei tarvitse kirjoittaa esim importissa tiedoston päätettä
   resolve: {
