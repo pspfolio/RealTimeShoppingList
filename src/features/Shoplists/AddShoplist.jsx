@@ -38,12 +38,7 @@ class AddShoplist extends Component {
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onItemAdd = this.onItemAdd.bind(this);
-  }
-
-  componentDidMount() {
-    database.ref().on('value', snapshot => {
-      console.log('DB CHANGED', snapshot.val());
-    });
+    this.handleShoplistSave = this.handleShoplistSave.bind(this);
   }
 
   onTitleChange(event) {
@@ -58,6 +53,14 @@ class AddShoplist extends Component {
         [value]: [...prevState.shoplistItems[value], item.name]
       }
     }));
+  }
+
+  handleShoplistSave(event) {
+    event.preventDefault();
+    database
+      .ref()
+      .child('shoppinglist')
+      .set({ ...this.state });
   }
 
   render() {
@@ -79,6 +82,7 @@ class AddShoplist extends Component {
           {meat.length > 0 && <AddShoplistPreview categoryName="Liha" items={meat} />}
 
           {drinks.length > 0 && <AddShoplistPreview categoryName="Juomat" items={drinks} />}
+          <button onClick={this.handleShoplistSave}>Save shoplist</button>
         </ShoplistPreviewWrapper>
       </FlexWrapper>
     );
