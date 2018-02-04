@@ -1,9 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // polku josta React aloittaa suorituksen
-  entry: './src/index.jsx',
+  entry: {
+    main: './src/index.jsx',
+    vendor: ['react', 'react-loadable', 'styled-components', 'material-ui']
+  },
   output: {
     // polku johon bundlattu tiedosto generoidaan ja bundlen nimi
     path: path.resolve(__dirname, 'public'),
@@ -31,6 +35,9 @@ module.exports = {
       title: 'Shoppinglist',
       template: './src/index.html',
       hash: true
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
     })
   ]
 };
