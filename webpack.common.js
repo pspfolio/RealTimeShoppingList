@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     // polku johon bundlattu tiedosto generoidaan ja bundlen nimi
-    path: path.resolve('public'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].js'
   },
   // Kerrotaan webpackille, että selvittää automaattisesti nämä päätteet
