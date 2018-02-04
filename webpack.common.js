@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // polku josta React aloittaa suorituksen
@@ -6,7 +7,7 @@ module.exports = {
   output: {
     // polku johon bundlattu tiedosto generoidaan ja bundlen nimi
     path: path.resolve('public'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   // Kerrotaan webpackille, että selvittää automaattisesti nämä päätteet
   // Ei tarvitse kirjoittaa esim importissa tiedoston päätettä
@@ -24,5 +25,12 @@ module.exports = {
       { test: /\.js$/, loader: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ },
       { test: /\.jsx$/, loader: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Shoppinglist',
+      template: './src/index.html',
+      hash: true
+    })
+  ]
 };
