@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "jest"],
   "rules": {
     "react/prop-types": 0,
     "jsx-a11y/anchor-is-valid": [
@@ -21,6 +21,7 @@
   },
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   }
 }
