@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { database } from '../../firebase/index';
+import { database } from '../../../firebase/index';
 import AddShoplistForm from './AddShoplistForm';
 import AddShoplistPreview from './AddShoplistPreview';
-import withAuthorization from '../../common/HOC/withAuthorization';
+import withAuthorization from '../../../common/HOC/withAuthorization';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -80,7 +80,7 @@ class AddShoplist extends Component {
           <ShoplistHeader isPlaceHolder={!title}>{title || 'Title placeholder'}</ShoplistHeader>
 
           {fruitsvegetables.length > 0 && (
-            <AddShoplistPreview categoryName="Hedelmät & Vihannekset" emoji="🥕" items={fruitsvegetables} />
+            <AddShoplistPreview categoryName="Hedelmät & Vihannekset" items={fruitsvegetables} />
           )}
 
           {bread.length > 0 && <AddShoplistPreview categoryName="leivät" items={bread} />}

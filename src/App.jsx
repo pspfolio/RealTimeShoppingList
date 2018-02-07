@@ -15,7 +15,7 @@ const FlexWrapper = styled.div`
 `;
 
 const AsyncAddShoplist = Loadable({
-  loader: () => import('./features/Shoplists/AddShoplist'),
+  loader: () => import('./features/Shoplists/AddShoplist/AddShoplist'),
   loading: Loading
 });
 

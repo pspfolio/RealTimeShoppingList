@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { purple500 } from 'material-ui/styles/colors';
-import ShoplistCategorySelectField from './ShoplistCategorySelectField';
+import ShoplistCategorySelectField from '../ShoplistCategorySelectField';
 
 const FlexWrapper = styled.div`
   display: flex;
