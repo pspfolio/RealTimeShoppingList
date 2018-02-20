@@ -15,17 +15,17 @@ const FlexWrapper = styled.div`
 `;
 
 const AsyncAddShoplist = Loadable({
-  loader: () => import('./features/Shoplists/AddShoplist/AddShoplist'),
+  loader: () => import('./features/ShoppingList/Add/AddShoplist'),
   loading: Loading
 });
 
 const AsyncShoplist = Loadable({
-  loader: () => import('./features/Shoplists/Shoplist'),
+  loader: () => import('./features/ShoppingList/ShoppingList'),
   loading: Loading
 });
 
 const AsyncShoplists = Loadable({
-  loader: () => import('./features/Shoplists/Shoplists'),
+  loader: () => import('./features/ShoppingList/List/Shoplists'),
   loading: Loading
 });
 
