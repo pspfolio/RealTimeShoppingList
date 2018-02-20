@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ShoplistItem = styled.p`
+const ShoplistPreviewItem = styled.p`
   color: #5e7785;
 `;
 
@@ -9,9 +9,9 @@ const AddShoplistPreview = ({ items = [], categoryName }) => (
   <div>
     <h3>{`${categoryName}`}</h3>
     {items.map(item => (
-      <ShoplistItem className="preview-shoplist-item" key={item}>
+      <ShoplistPreviewItem className="preview-shoplist-item" key={item}>
         {item}
-      </ShoplistItem>
+      </ShoplistPreviewItem>
     ))}
   </div>
 );
