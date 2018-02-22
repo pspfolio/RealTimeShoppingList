@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import map from 'lodash/map';
+import { Link } from 'react-router-dom';
 import { database } from '../../../firebase/index';
 
 class Shoplists extends Component {
@@ -21,7 +22,15 @@ class Shoplists extends Component {
 
   render() {
     const { shoplists } = this.state;
-    return <div>{map(shoplists, (shoplist, key) => <p key={key}>{shoplist}</p>)}</div>;
+    return (
+      <div>
+        {map(shoplists, (shoplist, key) => (
+          <div>
+            <Link to={`list/${key}`}>{shoplist}</Link>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 export default Shoplists;
