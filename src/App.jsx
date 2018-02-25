@@ -19,11 +19,6 @@ const AsyncAddShoplist = Loadable({
   loading: Loading
 });
 
-const AsyncShoplist = Loadable({
-  loader: () => import('./features/ShoppingList/ShoppingList'),
-  loading: Loading
-});
-
 const AsyncShoplists = Loadable({
   loader: () => import('./features/ShoppingList/List/Shoplists'),
   loading: Loading
@@ -49,12 +44,12 @@ const App = (props, { authUser }) => (
     <MuiThemeProvider>
       <FlexWrapper>
         {authUser && <Sidebar />}
-        <Route exact path="/" component={AsyncShoplist} />
-        <Route exact path="/list" component={AsyncShoplists} />
-        <Route exact path="/Add" component={AsyncAddShoplist} />
-        <Route exact path="/login" component={AsyncSignIn} />
-        <Route exact path="/register" component={AsyncSignUp} />
-        <Route exact path="/pw-forget" component={AsyncPasswordForget} />
+        <Route exact path="/" component={AsyncShoplists} />
+        <Route path="/add" component={AsyncAddShoplist} />
+        <Route path="/login" component={AsyncSignIn} />
+        <Route path="/register" component={AsyncSignUp} />
+        <Route path="/pw-forget" component={AsyncPasswordForget} />
+        <Route path="/item/:id" component={AsyncShoplists} />
       </FlexWrapper>
     </MuiThemeProvider>
   </Router>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ShoplistItem from './ShoplistItem';
-import withAuthorization from '../../common/HOC/withAuthorization';
+import ShoplistItem from './ShowShoplistItem';
+import withAuthorization from '../../../common/HOC/withAuthorization';
 
 const ListWrapper = styled.ul`
   list-style: none;
@@ -11,7 +11,7 @@ const ListWrapper = styled.ul`
   width: 100%;
 `;
 
-class Shoplist extends Component {
+class ShowShoppingList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,10 +32,10 @@ class Shoplist extends Component {
   }
 }
 
-Shoplist.contextTypes = {
+ShowShoppingList.contextTypes = {
   authUser: PropTypes.object
 };
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(Shoplist);
+export default withAuthorization(authCondition)(ShowShoppingList);

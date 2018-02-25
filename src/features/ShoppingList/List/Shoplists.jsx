@@ -26,7 +26,7 @@ class Shoplists extends Component {
       <div>
         {map(shoplists, (shoplist, key) => (
           <div key={key}>
-            <Link to={`list/${key}`}>{shoplist}</Link>
+            <Link to={`/item/${key}`}>{shoplist}</Link>
           </div>
         ))}
       </div>

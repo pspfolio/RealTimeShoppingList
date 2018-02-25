@@ -22,13 +22,10 @@ const Navigation = () => (
   <nav>
     <List>
       <li>
-        <StyledLink to="/">Frontpage</StyledLink>
+        <StyledLink to="/">List</StyledLink>
       </li>
       <li>
-        <StyledLink to="/list">Shopping lists</StyledLink>
-      </li>
-      <li>
-        <StyledLink to="/add">Add shopping list</StyledLink>
+        <StyledLink to="/add">Add</StyledLink>
       </li>
     </List>
   </nav>

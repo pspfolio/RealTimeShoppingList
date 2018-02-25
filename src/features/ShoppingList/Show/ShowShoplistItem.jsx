@@ -6,6 +6,6 @@ const ListItem = styled.li`
   border-top: 2px solid #f0edf0;
 `;
 
-const ShoplistItem = ({ name, inCart }) => <ListItem className={inCart ? 'inCart' : ''}>{name}</ListItem>;
+const ShowShoplistItem = ({ name, inCart }) => <ListItem className={inCart ? 'inCart' : ''}>{name}</ListItem>;
 
-export default ShoplistItem;
+export default ShowShoplistItem;
