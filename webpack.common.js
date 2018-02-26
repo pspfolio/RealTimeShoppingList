@@ -9,6 +9,7 @@ module.exports = {
     vendor: ['react', 'react-loadable', 'styled-components', 'material-ui']
   },
   output: {
+    publicPath: '/',
     // polku johon bundlattu tiedosto generoidaan ja bundlen nimi
     path: path.resolve(__dirname, 'public'),
     filename: '[name].js'

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Loadable from 'react-loadable';
@@ -24,6 +24,11 @@ const AsyncShoplists = Loadable({
   loading: Loading
 });
 
+const AsyncShowShoppingList = Loadable({
+  loader: () => import('./features/ShoppingList/Show/ShowShoppingList'),
+  loading: Loading
+});
+
 const AsyncSignIn = Loadable({
   loader: () => import('./features/Authentication/SignIn/SignIn'),
   loading: Loading
@@ -44,12 +49,14 @@ const App = (props, { authUser }) => (
     <MuiThemeProvider>
       <FlexWrapper>
         {authUser && <Sidebar />}
-        <Route exact path="/" component={AsyncShoplists} />
-        <Route path="/add" component={AsyncAddShoplist} />
-        <Route path="/login" component={AsyncSignIn} />
-        <Route path="/register" component={AsyncSignUp} />
-        <Route path="/pw-forget" component={AsyncPasswordForget} />
-        <Route path="/item/:id" component={AsyncShoplists} />
+        <Switch>
+          <Route exact path="/" component={AsyncShoplists} />
+          <Route path="/add" component={AsyncAddShoplist} />
+          <Route path="/login" component={AsyncSignIn} />
+          <Route path="/register" component={AsyncSignUp} />
+          <Route path="/pw-forget" component={AsyncPasswordForget} />
+          <Route path="/item/:id" component={AsyncShowShoppingList} />
+        </Switch>
       </FlexWrapper>
     </MuiThemeProvider>
   </Router>
