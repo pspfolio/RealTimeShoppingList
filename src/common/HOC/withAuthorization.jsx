@@ -13,7 +13,7 @@ const withAuthorization = authCondition => ChildComponent => {
       });
     }
     render() {
-      return this.context.authUser ? <ChildComponent /> : null;
+      return this.context.authUser ? <ChildComponent {...this.props} /> : null;
     }
   }
 

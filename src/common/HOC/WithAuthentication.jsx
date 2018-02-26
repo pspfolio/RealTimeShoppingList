@@ -29,7 +29,7 @@ const withAuthentication = InnerComponent => {
     }
 
     render() {
-      return <InnerComponent />;
+      return <InnerComponent {...this.props} />;
     }
   }
 
