@@ -17,17 +17,27 @@ class ShowShoppingList extends Component {
     super(props);
     this.state = {
       items: [],
+      shoplist: null,
       shopitems: [{ id: 1, name: 'Maito', inCart: false }, { id: 2, name: 'Banaani', inCart: true }]
     };
 
     this.ref = database.ref('shoppinglist');
+    this.shoppingListRef = this.ref.child('/shoplist');
     this.itemsRef = this.ref.child('/items');
   }
 
   componentDidMount() {
-    this.itemsRef.child('-L4R22GGsFzaoxX337OE').on('value', snap => {
+    const { match } = this.props;
+
+    this.itemsRef.child(match.params.id).on('value', snap => {
       this.setState({
         items: snap.val()
+      });
+    });
+
+    this.shoppingListRef.child(match.params.id).on('value', snap => {
+      this.setState({
+        shoplist: snap.val()
       });
     });
   }
@@ -37,6 +47,7 @@ class ShowShoppingList extends Component {
       <div>
         <ListWrapper>
           <p>{this.state.items.length}</p>
+          <p>{this.state.shoplist && this.state.shoplist}</p>
           {this.state.shopitems.map(shopitem => (
             <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
           ))}
