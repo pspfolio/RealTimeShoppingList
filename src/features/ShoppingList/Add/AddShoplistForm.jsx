@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import map from 'lodash/map';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { purple500 } from 'material-ui/styles/colors';
+import { database } from '../../../firebase/index';
 import ShoplistCategorySelectField from '../ShoplistCategorySelectField';
 
 const FlexWrapper = styled.div`
@@ -20,25 +22,26 @@ const styles = {
   }
 };
 
-const categories = [
-  { value: 'fruitsvegetables', name: 'Fruits & Vegetables' },
-  { value: 'bread', name: 'Bread' },
-  { value: 'milkyogurts', name: 'Milk & Yogurts' },
-  { value: 'meat', name: 'Meat' },
-  { value: 'drinks', name: 'Drinks' }
-];
-
 class ShoplistForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       name: '',
-      category: { value: 'fruitsvegetables', name: 'Fruits & Vegetables' }
+      category: { value: 'fruitsvegetables', name: 'Fruits & Vegetables' },
+      categories: []
     };
 
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.refCategories = database.ref('categories');
+  }
+
+  componentDidMount() {
+    this.refCategories.once('value', snap => {
+      const categories = map(snap.val(), (category, key) => ({ value: key, name: category }));
+      this.setState({ categories });
+    });
   }
 
   handleAddItem(event) {
@@ -52,14 +55,15 @@ class ShoplistForm extends Component {
   }
 
   handleCategoryChange(event, index, value) {
+    const { categories } = this.state;
     const { name } = categories.filter(category => category.value === value)[0];
     this.setState({ category: { value, name } });
   }
 
   render() {
-    const { name, category } = this.state;
+    const { name, category, categories } = this.state;
     const { title, onTitleChange } = this.props;
-
+    console.log(this.state.categories);
     return (
       <FlexWrapper>
         <TextField
