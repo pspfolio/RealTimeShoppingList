@@ -63,7 +63,6 @@ class ShoplistForm extends Component {
   render() {
     const { name, category, categories } = this.state;
     const { title, onTitleChange } = this.props;
-    console.log(this.state.categories);
     return (
       <FlexWrapper>
         <TextField
