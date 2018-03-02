@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { database } from '../../../firebase/index';
 import AddShoplistForm from './AddShoplistForm';
 import AddShoplistPreview from './AddShoplistPreview';
-import withAuthorization from '../../../common/HOC/withAuthorization';
+import WithAuthorization from '../../../common/HOC/WithAuthorization';
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -103,4 +103,4 @@ AddShoplist.contextTypes = {
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(AddShoplist);
+export default WithAuthorization(authCondition)(AddShoplist);

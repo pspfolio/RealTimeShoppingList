@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ShoplistItem from './ShowShoplistItem';
 import { database } from '../../../firebase/index';
-import withAuthorization from '../../../common/HOC/withAuthorization';
+import WithAuthorization from '../../../common/HOC/WithAuthorization';
 
 const ListWrapper = styled.ul`
   list-style: none;
@@ -63,4 +63,4 @@ ShowShoppingList.contextTypes = {
 
 const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(ShowShoppingList);
+export default WithAuthorization(authCondition)(ShowShoppingList);

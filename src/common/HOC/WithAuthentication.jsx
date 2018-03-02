@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { auth } from '../../firebase';
 
-const withAuthentication = InnerComponent => {
-  class WithAuthentication extends Component {
+const WithAuthentication = InnerComponent => {
+  class WrapperComponent extends Component {
     constructor(props) {
       super(props);
 
@@ -33,11 +33,11 @@ const withAuthentication = InnerComponent => {
     }
   }
 
-  WithAuthentication.childContextTypes = {
+  WrapperComponent.childContextTypes = {
     authUser: PropTypes.object
   };
 
-  return WithAuthentication;
+  return WrapperComponent;
 };
 
-export default withAuthentication;
+export default WithAuthentication;

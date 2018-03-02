@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { auth } from '../../firebase';
 
-const withAuthorization = authCondition => ChildComponent => {
-  class WithAuthorization extends Component {
+const WithAuthorization = authCondition => ChildComponent => {
+  class WrapperComponent extends Component {
     componentDidMount() {
       auth.onAuthStateChanged(authUser => {
         if (!authCondition(authUser)) {
@@ -17,11 +17,11 @@ const withAuthorization = authCondition => ChildComponent => {
     }
   }
 
-  WithAuthorization.contextTypes = {
+  WrapperComponent.contextTypes = {
     authUser: PropTypes.object
   };
 
-  return withRouter(WithAuthorization);
+  return withRouter(WrapperComponent);
 };
 
-export default withAuthorization;
+export default WithAuthorization;

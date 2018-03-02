@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Loadable from 'react-loadable';
 import Loading from './common/Loading/Loading';
 import Sidebar from './features/Sidebar';
-import WithAuthentication from './common/HOC/withAuthentication';
+import WithAuthentication from './common/HOC/WithAuthentication';
 
 const FlexWrapper = styled.div`
   display: flex;
