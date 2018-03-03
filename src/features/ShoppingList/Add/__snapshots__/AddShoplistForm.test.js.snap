@@ -65,30 +65,7 @@ ShallowWrapper {
           value=""
         />,
         <CategorySelectField
-          categories={
-            Array [
-              Object {
-                "name": "Fruits & Vegetables",
-                "value": "fruitsvegetables",
-              },
-              Object {
-                "name": "Bread",
-                "value": "bread",
-              },
-              Object {
-                "name": "Milk & Yogurts",
-                "value": "milkyogurts",
-              },
-              Object {
-                "name": "Meat",
-                "value": "meat",
-              },
-              Object {
-                "name": "Drinks",
-                "value": "drinks",
-              },
-            ]
-          }
+          categories={Array []}
           handleCategoryChange={[Function]}
           value="fruitsvegetables"
         />,
@@ -167,28 +144,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "categories": Array [
-            Object {
-              "name": "Fruits & Vegetables",
-              "value": "fruitsvegetables",
-            },
-            Object {
-              "name": "Bread",
-              "value": "bread",
-            },
-            Object {
-              "name": "Milk & Yogurts",
-              "value": "milkyogurts",
-            },
-            Object {
-              "name": "Meat",
-              "value": "meat",
-            },
-            Object {
-              "name": "Drinks",
-              "value": "drinks",
-            },
-          ],
+          "categories": Array [],
           "handleCategoryChange": [Function],
           "value": "fruitsvegetables",
         },
@@ -273,30 +229,7 @@ ShallowWrapper {
             value=""
           />,
           <CategorySelectField
-            categories={
-              Array [
-                Object {
-                  "name": "Fruits & Vegetables",
-                  "value": "fruitsvegetables",
-                },
-                Object {
-                  "name": "Bread",
-                  "value": "bread",
-                },
-                Object {
-                  "name": "Milk & Yogurts",
-                  "value": "milkyogurts",
-                },
-                Object {
-                  "name": "Meat",
-                  "value": "meat",
-                },
-                Object {
-                  "name": "Drinks",
-                  "value": "drinks",
-                },
-              ]
-            }
+            categories={Array []}
             handleCategoryChange={[Function]}
             value="fruitsvegetables"
           />,
@@ -375,28 +308,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "categories": Array [
-              Object {
-                "name": "Fruits & Vegetables",
-                "value": "fruitsvegetables",
-              },
-              Object {
-                "name": "Bread",
-                "value": "bread",
-              },
-              Object {
-                "name": "Milk & Yogurts",
-                "value": "milkyogurts",
-              },
-              Object {
-                "name": "Meat",
-                "value": "meat",
-              },
-              Object {
-                "name": "Drinks",
-                "value": "drinks",
-              },
-            ],
+            "categories": Array [],
             "handleCategoryChange": [Function],
             "value": "fruitsvegetables",
           },
