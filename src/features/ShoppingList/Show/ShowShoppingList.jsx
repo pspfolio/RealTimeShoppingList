@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ShoplistItem from './ShowShoplistItem';
+import map from 'lodash/map';
 import { database } from '../../../firebase/index';
+import AddShoplistPreview from '../Add/AddShoplistPreview';
 import WithAuthorization from '../../../common/HOC/WithAuthorization';
 
 const ListWrapper = styled.ul`
@@ -16,14 +17,15 @@ class ShowShoppingList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      items: {},
       shoplist: null,
-      shopitems: [{ id: 1, name: 'Maito', inCart: false }, { id: 2, name: 'Banaani', inCart: true }]
+      categories: null
     };
 
     this.ref = database.ref('shoppinglist');
     this.shoppingListRef = this.ref.child('/shoplist');
     this.itemsRef = this.ref.child('/items');
+    this.categoriesRef = database.ref('categories');
   }
 
   componentDidMount() {
@@ -40,17 +42,32 @@ class ShowShoppingList extends Component {
         shoplist: snap.val()
       });
     });
+
+    this.categoriesRef.once('value', snap => {
+      this.setState({
+        categories: snap.val()
+      });
+    });
   }
 
   render() {
+    const { shoplist, categories, items } = this.state;
+
+    const categoriesWithValues = map(categories, (category, key) => ({
+      name: category,
+      values: items[key]
+    }));
+
     return (
       <div>
+        <h2>{shoplist}</h2>
         <ListWrapper>
-          <p>{this.state.items.length}</p>
-          <p>{this.state.shoplist && this.state.shoplist}</p>
-          {this.state.shopitems.map(shopitem => (
-            <ShoplistItem key={shopitem.id} name={shopitem.name} inCart={shopitem.inCart} />
-          ))}
+          {categoriesWithValues.map(
+            shopitem =>
+              shopitem.values && (
+                <AddShoplistPreview key={shopitem.name} items={shopitem.values} categoryName={shopitem.name} />
+              )
+          )}
         </ListWrapper>
       </div>
     );
