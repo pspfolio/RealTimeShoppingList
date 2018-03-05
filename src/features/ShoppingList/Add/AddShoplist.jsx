@@ -56,7 +56,7 @@ class AddShoplist extends Component {
     this.setState(prevState => ({
       shoplistItems: {
         ...prevState.shoplistItems,
-        [value]: [...prevState.shoplistItems[value], item.name]
+        [value]: [...prevState.shoplistItems[value], { name: item.name, inBasket: false }]
       }
     }));
   }
