@@ -9,7 +9,7 @@ const AddShoplistPreview = ({ items = [], categoryName }) => (
   <div>
     <h3>{`${categoryName}`}</h3>
     {items.map(item => (
-      <ShoplistPreviewItem className="preview-shoplist-item" key={item.name}>
+      <ShoplistPreviewItem className="preview-shoplist-item" key={item.id}>
         {item.name}
       </ShoplistPreviewItem>
     ))}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import uuid from 'uuid-v4';
 import { database } from '../../../firebase/index';
 import AddShoplistForm from './AddShoplistForm';
 import AddShoplistPreview from './AddShoplistPreview';
@@ -56,7 +57,7 @@ class AddShoplist extends Component {
     this.setState(prevState => ({
       shoplistItems: {
         ...prevState.shoplistItems,
-        [value]: [...prevState.shoplistItems[value], { name: item.name, inBasket: false }]
+        [value]: [...prevState.shoplistItems[value], { name: item.name, inBasket: false, id: uuid() }]
       }
     }));
   }
