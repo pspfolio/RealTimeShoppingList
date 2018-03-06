@@ -18,26 +18,34 @@ class ShowShoppingList extends Component {
     super(props);
     this.state = {
       items: {},
+      itemsInCart: {},
       shoplist: null,
       categories: null
     };
 
     this.ref = database.ref('shoppinglist');
-    this.shoppingListRef = this.ref.child('/shoplist');
-    this.itemsRef = this.ref.child('/items');
+    this.shoppingListByIdRef = this.ref.child('/shoplist').child(props.match.params.id);
+    this.shoplistItemsByIdRef = this.ref.child('/items').child(props.match.params.id);
+    this.shoplistItemsInCart = this.shoplistItemsByIdRef.child('inCart');
     this.categoriesRef = database.ref('categories');
+
+    this.handleInCartClick = this.handleInCartClick.bind(this);
   }
 
   componentDidMount() {
-    const { match } = this.props;
-
-    this.itemsRef.child(match.params.id).on('value', snap => {
+    this.shoplistItemsByIdRef.on('value', snap => {
       this.setState({
         items: snap.val()
       });
     });
 
-    this.shoppingListRef.child(match.params.id).on('value', snap => {
+    this.shoplistItemsInCart.on('value', snap => {
+      this.setState({
+        itemsInCart: snap.val() || {}
+      });
+    });
+
+    this.shoppingListByIdRef.on('value', snap => {
       this.setState({
         shoplist: snap.val()
       });
@@ -50,8 +58,12 @@ class ShowShoppingList extends Component {
     });
   }
 
+  handleInCartClick(id) {
+    this.shoplistItemsInCart.child(id).set(this.state.itemsInCart[id] ? null : true);
+  }
+
   render() {
-    const { shoplist, categories, items } = this.state;
+    const { shoplist, categories, items, itemsInCart } = this.state;
 
     const categoriesWithValues = map(categories, (category, key) => ({
       name: category,
@@ -65,7 +77,13 @@ class ShowShoppingList extends Component {
           {categoriesWithValues.map(
             shopitem =>
               shopitem.values && (
-                <AddShoplistPreview key={shopitem.name} items={shopitem.values} categoryName={shopitem.name} />
+                <AddShoplistPreview
+                  key={shopitem.name}
+                  items={shopitem.values}
+                  categoryName={shopitem.name}
+                  handleInCartClick={this.handleInCartClick}
+                  inCart={itemsInCart || undefined}
+                />
               )
           )}
         </ListWrapper>
